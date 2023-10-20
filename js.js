@@ -98,15 +98,32 @@
 // Soru: Verilen bir dizi içindeki tek sayıları bulup yeni bir diziye ekleyin.
 // let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let tek = [];
+// let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// let tek = [];
 
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] % 2 !== 0) { // Use the modulo operator to check if a number is odd.
-    tek.push(numbers[i]);
+// for (let i = 0; i < numbers.length; i++) {
+//   if (numbers[i] % 2 !== 0) { // Use the modulo operator to check if a number is odd.
+//     tek.push(numbers[i]);
+//   }
+// }
+
+// console.log(tek);
+
+// // ************************************************************
+function asalMi(sayi) {
+  if (sayi <= 1) {
+    return false;
   }
+  for (let i = 2; i <= Math.sqrt(sayi); i++) {
+    if (sayi % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
-console.log(tek);
+const a = [1, 3, 5, 6, 7, 8, 9, 11];
 
-// ************************************************************
+const asalSayilar = a.filter(asalMi);
+
+console.log(asalSayilar);
