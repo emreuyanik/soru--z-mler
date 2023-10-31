@@ -74,87 +74,82 @@ var allProducts = [
     ],
   },
 ]
-console.log(allProducts);
 
 // <--------------------  Delete product  ------------------------->
 // 1 - Ürün listesinden id'si verilen ürünü silen ve geri kalan ürün listesini dönen fonksiyonu yazınız.(deleteProduct(id))
 
-// const deleteProduct = (id, allProducts) => allProducts.filter(product => product.id !== id);
+function deleteProduct(id) {
+  const lastProducts = allProducts.filter(product => product.id !== id);
+  allProducts = lastProducts;
 
-// const productIdToDelete = 3;
-// const updatedProducts = deleteProduct(productIdToDelete, allProducts);
-// allProducts = updatedProducts //asıl listeden siler
+ return allProducts;
 
-// console.log(updatedProducts);
-// ****************************************************
-// function deleteProduct(id){
+}
 
-
-
-// const filteredList =  allProducts.filter((product)=>{
- 
-//   return product.id !== id
-// })
-
-// allProducts = filteredList
-
-// return allProducts
-
-// }
-
-// console.log(deleteProduct(2));
-
-
-
-
+// <--------------------  Delete product  ------------------------->
 
 
 // <--------------------  Create  product  ------------------------->
 // 2 - Ürün listesine yeni bir ürün ekleyen ve yeni listeyi dönen fonksiyonu yazınız. (createNewProduct({title, description, image}))
 
-function createNewProduct(parametre) {
-  const {newTitle,description,image} =parametre
-  
-  console.log(newTitle);
-  console.log(description);
-  console.log(image);
+function createNewProduct({ title, description, image }) {
 
- const newObject = {
-  id:allProducts.length + 1,
-  title:newTitle,
-  description:description,
-  images:[image],
-
+  const newProduct = {
+    id: allProducts.length + 1,
+    title,
+    description,
+    images: [image],
   }
-allProducts.push(newObject);
+  allProducts.push(newProduct)
+
+
+  return allProducts;
+
 }
-
-let newProduct = {
-  newTitle:'iphone 15',
-  description:'lorem ipsum',
-  image:'imageurl'
-};
-
-createNewProduct(newProduct);
-
-console.log(allProducts);
-
-
-
 
 
 // <--------------------  Create  product  ------------------------->
 
 // <--------------------  Edit  product  ------------------------->
-// 3 - Ürün listesindeki id si belirtlen bir ürünün başlığını ve açıklamasını güncelleyen ve yeni listeyi dönen fonksiyonu yazınız. (editProduct({id, title, description}))
+// 3 - Ürün listesindeki bir ürünü güncelleyen ve yeni listeyi dönen fonksiyonu yazınız. (editProduct({id, title, description}))
+
+function editProduct({id,title,description}) {
+  console.log('edit');
+  console.log(title);
+
+    const editedProductList = allProducts.map((product) => {
+      // if this product has the same ID as the edited product
+
+      if (id === product.id) {
+      
+        
+        //
+        return { ...product, title: title ,description:description};
+      }
+      return product;
+    });
+  
+console.log(editedProductList);
 
 
+  return editedProductList;
+ 
+}
 
 // <--------------------  Edit  product  ------------------------->
 
 // <--------------------  filter  product  ------------------------->
-// 4 - Ürün listesindeki ürünleri gönderilen arama kelimesine göre, ürünün adı, açıklaması ve markasında arayıp eşleşen tüm ürünlerin listesini dönen fonksiyonu yazınız. (filterProducts(query)) büyük-küçük harf duyarlılığı olmamalıdır.
+// 4 - Ürün listesindeki ürünleri, ürünün adı, açıklaması ve markasında arayıp eşleşen tüm ürünlerin listesini dönen fonksiyonu yazınız. (filterProducts(query)) büyük-küçük harf duyarlılığı olmamalıdır.
 
+function filterProducts(query) {
+  
+console.log(query);
+const filteredProducts = allProducts.filter(product => product.title.toLowerCase().includes(query.toLowerCase()) || product.description.toLowerCase().includes(query.toLowerCase()) )
+console.log(filteredProducts);
+
+
+return filteredProducts;
+}
 
 
 
