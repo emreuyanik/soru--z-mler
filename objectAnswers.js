@@ -104,6 +104,7 @@ function createNewProduct({ title, description, image }) {
 
 
   return allProducts;
+  console.log(object);
 
 }
 
